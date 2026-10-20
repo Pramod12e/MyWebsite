@@ -3,11 +3,15 @@ import type { Project } from "@/lib/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group flex h-full flex-col rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-xl hover:shadow-accent/10">
+      <span
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-accent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      />
       <h3 className="text-xl font-semibold tracking-tight">
         <Link
           href={`/projects/${project.slug}`}
-          className="transition-colors hover:text-accent"
+          className="inline-block text-muted transition-all group-hover:translate-x-1 group-hover:text-foreground"
         >
           {project.title}
         </Link>
