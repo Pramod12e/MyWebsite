@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "motion/react";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
@@ -16,13 +17,17 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const linkClass = (href: string) =>
-    pathname.startsWith(href)
-      ? "font-medium text-foreground"
-      : "text-muted transition-colors hover:text-foreground";
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl supports-[backdrop-filter]:bg-background/50">
+      {/* Gradient accent line */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-accent/60 to-transparent"
+      />
+
       <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
         <Link
           href="/"
@@ -32,12 +37,28 @@ export default function Navbar() {
           Pramod<span className="text-accent">.</span>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <ul className="hidden items-center gap-8 text-sm sm:flex">
+        <div className="flex items-center gap-3">
+          <ul className="hidden items-center gap-1 text-sm sm:flex">
             {links.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className={linkClass(link.href)}>
-                  {link.label}
+                <Link
+                  href={link.href}
+                  className={`relative block rounded-full px-4 py-1.5 transition-colors ${
+                      link.href === "/about" ? "nav-about" : ""
+                    } ${
+                      isActive(link.href)
+                        ? "text-foreground"
+                        : "text-muted hover:text-foreground"
+                    }`}
+                >
+                  {isActive(link.href) && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      className="absolute inset-0 rounded-full border border-border bg-foreground/10"
+                    />
+                  )}
+                  <span className="relative">{link.label}</span>
                 </Link>
               </li>
             ))}
@@ -71,13 +92,17 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <ul className="space-y-1 border-t border-border px-6 py-4 text-base sm:hidden">
+        <ul className="space-y-1 border-t border-border bg-background/95 px-6 py-4 text-base backdrop-blur-xl sm:hidden">
           {links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className={`block py-2 ${linkClass(link.href)}`}
+                className={`block rounded-xl px-3 py-2 ${
+                  isActive(link.href)
+                    ? "bg-foreground/10 font-medium text-foreground"
+                    : "text-muted"
+                }`}
               >
                 {link.label}
               </Link>

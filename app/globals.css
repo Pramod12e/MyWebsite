@@ -94,12 +94,7 @@ body {
   50% { background-position: 100% 50%; }
 }
 
-@keyframes scroll-line {
-  0% { transform: scaleY(0); transform-origin: top; }
-  50% { transform: scaleY(1); transform-origin: top; }
-  51% { transform: scaleY(1); transform-origin: bottom; }
-  100% { transform: scaleY(0); transform-origin: bottom; }
-}
+
 
 .marquee-track {
   animation: marquee 35s linear infinite;
@@ -110,9 +105,6 @@ body {
   animation: gradient-shift 6s ease-in-out infinite;
 }
 
-.scroll-line {
-  animation: scroll-line 2.2s ease-in-out infinite;
-}
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
@@ -123,17 +115,64 @@ body {
   .marquee-dup {
     display: none;
   }
-  .text-shimmer,
-  .scroll-line {
+  .text-shimmer {
     animation: none;
   }
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.dark .photo-soft {
+  -webkit-mask-image: radial-gradient(ellipse 72% 68% at 50% 46%, #000 52%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 68% at 50% 46%, #000 52%, transparent 100%);
 }
 
-.fade-in {
-  animation: fade-in 1.6s ease-out both;
+@keyframes wave-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
+
+.wave-track {
+  animation: wave-slide 24s linear infinite;
+}
+
+.wave-reverse {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave-track {
+    animation: none;
+  }
+}
+
+
+
+@keyframes mini-cube-spin {
+  from { transform: rotateX(-20deg) rotateY(0deg); }
+  to { transform: rotateX(-20deg) rotateY(360deg); }
+}
+
+@keyframes nav-ping {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent); }
+  70% { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.mini-cube {
+  animation: mini-cube-spin 7s linear infinite;
+}
+
+html[data-nudge="about"] .nav-about {
+  color: var(--accent);
+  animation: nav-ping 1.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mini-cube {
+    animation: none;
+    transform: rotateX(-20deg) rotateY(-30deg);
+  }
+  html[data-nudge="about"] .nav-about {
+    animation: none;
+  }
+}
+

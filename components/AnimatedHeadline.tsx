@@ -5,8 +5,8 @@ import { motion } from "motion/react";
 type Word = { t: string; gradient?: boolean };
 
 const lines: Word[][] = [
-  [{ t: "Hi," }, { t: "I’m" }, { t: "Pramod.", gradient: true }],
-  [{ t: "I" }, { t: "build" }, { t: "for" }, { t: "the" }, { t: "web." }],
+  [{ t: "Building" }, { t: "scalable", gradient: true }],
+  [{ t: "web" }, { t: "products." }],
 ];
 
 const container = {
@@ -29,7 +29,7 @@ export default function AnimatedHeadline() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="mt-6 text-5xl font-bold tracking-tight text-white sm:text-6xl"
+      className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl"
     >
       {lines.map((line, i) => (
         <span key={i} className="block">
@@ -42,7 +42,7 @@ export default function AnimatedHeadline() {
                 variants={word}
                 className={`inline-block ${
                   w.gradient
-                    ? "text-shimmer bg-linear-to-r from-cyan-300 via-sky-500 to-cyan-300 bg-clip-text text-transparent"
+                    ? "text-shimmer bg-linear-to-r from-cyan-200 via-white to-sky-200 bg-clip-text text-transparent"
                     : ""
                 }`}
               >
