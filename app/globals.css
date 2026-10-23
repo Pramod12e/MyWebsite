@@ -37,6 +37,86 @@ body {
   color: var(--foreground);
 }
 
+.blog-hero {
+  isolation: isolate;
+}
+
+.blog-hero-glow {
+  position: absolute;
+  z-index: -1;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.32;
+  pointer-events: none;
+  animation: blog-glow-drift 12s ease-in-out infinite alternate;
+}
+
+.blog-hero-glow-one {
+  top: 2%;
+  left: -8%;
+  background: #22d3ee;
+}
+
+.blog-hero-glow-two {
+  top: -12%;
+  right: -5%;
+  background: #a855f7;
+  animation-delay: -4s;
+}
+
+.blog-hero-glow-three {
+  right: 30%;
+  bottom: -30%;
+  background: #3b82f6;
+  animation-delay: -8s;
+}
+
+.blog-title-dot {
+  color: transparent;
+  background: linear-gradient(135deg, #06b6d4, #6366f1 55%, #d946ef);
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.blog-search-box {
+  background: rgb(255 255 255 / 78%);
+  backdrop-filter: blur(18px);
+}
+
+.dark .blog-search-box {
+  background: rgb(8 12 22 / 72%);
+}
+
+.blog-wave-back {
+  fill: rgb(99 102 241 / 12%);
+}
+
+.blog-wave-front {
+  fill: var(--background);
+  opacity: 0.92;
+}
+
+.dark .blog-wave-back {
+  fill: rgb(34 211 238 / 14%);
+}
+
+.dark .blog-wave-front {
+  opacity: 0.96;
+}
+
+@keyframes blog-glow-drift {
+  from { transform: translate3d(-10px, -8px, 0) scale(0.95); }
+  to { transform: translate3d(18px, 14px, 0) scale(1.08); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-hero-glow {
+    animation: none;
+  }
+}
+
 .prose {
   --tw-prose-body: var(--muted);
   --tw-prose-headings: var(--foreground);

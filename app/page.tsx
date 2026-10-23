@@ -8,6 +8,8 @@ import HeroWaves from "@/components/HeroWaves";
 import AboutNudge from "@/components/AboutNudge";
 import Ticker from "@/components/Ticker";
 import { projects } from "@/lib/projects";
+import PostCard from "@/components/PostCard";
+import { getAllPosts } from "@/lib/blog";
 
 const skills = [
   "JavaScript",
@@ -25,6 +27,8 @@ const skills = [
 ];
 
 export default function Home() {
+  const recentPosts = getAllPosts().slice(0, 2);
+
   return (
     <>
       <Preloader />
@@ -102,6 +106,14 @@ export default function Home() {
         <Ticker items={skills} />
       </section>
 
+      {/* Personal introduction */}
+      <section className="mx-auto max-w-5xl px-6 py-14 sm:py-16">
+        <Reveal className="grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
+          <div><p className="text-sm font-medium text-accent">A little about me</p><h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Curious by nature.<br />Building for the web.</h2></div>
+          <div><p className="leading-relaxed text-muted sm:text-lg">I&apos;m a Computer Science Engineering student and software developer who enjoys turning ideas into useful digital experiences. I work across front-end and back-end technologies, bringing thoughtful interfaces and dependable functionality together.</p><Link href="/about" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-foreground">More about me <span aria-hidden="true">→</span></Link></div>
+        </Reveal>
+      </section>
+
       {/* Featured projects */}
       <section className="mx-auto max-w-5xl px-6 py-24">
         <Reveal className="flex items-end justify-between">
@@ -127,6 +139,31 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {/* Latest writing */}
+      {recentPosts.length > 0 && (
+        <section className="mx-auto max-w-5xl px-6 pb-24">
+          <Reveal className="flex items-end justify-between">
+            <div>
+              <p className="text-sm font-medium text-accent">Fresh from the blog</p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight">Latest writing</h2>
+            </div>
+            <Link href="/blog" className="hidden text-sm font-medium text-muted transition-colors hover:text-foreground sm:block">
+              All articles →
+            </Link>
+          </Reveal>
+          <div className="mt-8 grid gap-x-7 gap-y-10 sm:grid-cols-2">
+            {recentPosts.map((post, index) => (
+              <Reveal key={post.slug} delay={index * 0.1}>
+                <PostCard post={post} index={index} />
+              </Reveal>
+            ))}
+          </div>
+          <Link href="/blog" className="mt-8 inline-block text-sm font-medium text-muted transition-colors hover:text-foreground sm:hidden">
+            All articles →
+          </Link>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="mx-auto max-w-5xl px-6 pb-24">

@@ -2,19 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import type { Post, PostMeta } from "@/lib/blog-types";
 
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
-
-export type PostMeta = {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  tags: string[];
-  readingTime: string;
-};
-
-export type Post = PostMeta & { content: string };
 
 function parsePost(slug: string): Post | null {
   const filePath = path.join(POSTS_DIR, `${slug}.mdx`);
@@ -28,6 +18,7 @@ function parsePost(slug: string): Post | null {
     title: data.title ?? slug,
     description: data.description ?? "",
     date: data.date ?? "",
+    category: data.category ?? "Engineering",
     tags: data.tags ?? [],
     readingTime: readingTime(content).text,
     content,
@@ -50,10 +41,4 @@ export function getPost(slug: string): Post | null {
   return parsePost(slug);
 }
 
-export function formatDate(date: string): string {
-  return new Date(date).toLocaleDateString("en-IN", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
+export type { Post, PostMeta } from "@/lib/blog-types";

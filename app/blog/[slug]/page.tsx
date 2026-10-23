@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { formatDate, getAllPosts, getPost } from "@/lib/blog";
+import { getAllPosts, getPost } from "@/lib/blog";
+import { formatDate } from "@/lib/blog-types";
 import { mdxOptions } from "@/lib/mdx";
 
 type PageProps = {
