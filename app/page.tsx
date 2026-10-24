@@ -36,15 +36,15 @@ export default function Home() {
 
       {/* Hero */}
       <section className="p-4">
-        <div className="dark relative isolate flex items-center overflow-hidden rounded-4xl bg-linear-to-br from-sky-700 via-blue-700 to-indigo-700 text-foreground shadow-2xl shadow-blue-500/20">
+        <div className="relative isolate flex items-center overflow-hidden rounded-4xl bg-linear-to-br from-sky-700 via-blue-700 to-indigo-700 text-white shadow-2xl shadow-blue-500/20 dark:from-slate-900 dark:via-slate-950 dark:to-black dark:shadow-black/40">
           {/* Decorative glows */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-24 -top-24 -z-10 h-80 w-80 rounded-full bg-cyan-400/30 blur-3xl"
+            className="pointer-events-none absolute -left-24 -top-24 -z-10 h-80 w-80 rounded-full bg-cyan-300/25 blur-3xl dark:bg-cyan-500/15"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-32 right-0 -z-10 h-96 w-96 rounded-full bg-indigo-400/30 blur-3xl"
+            className="pointer-events-none absolute -bottom-32 right-0 -z-10 h-96 w-96 rounded-full bg-indigo-300/25 blur-3xl dark:bg-indigo-500/15"
           />
 
           <HeroWaves />
@@ -60,14 +60,14 @@ export default function Home() {
               <AnimatedHeadline />
 
               <Reveal delay={0.7}>
-                <p className="mt-6 max-w-lg text-lg leading-relaxed text-white/80">
+                <p className="mt-6 hidden max-w-lg text-lg leading-relaxed text-white/80 md:block">
                   From React interfaces and Node.js APIs to SQL and MongoDB
                   databases, I turn ideas into fast, reliable full-stack
                   products.
                 </p>
               </Reveal>
 
-              <Reveal delay={0.9} className="mt-8 flex flex-wrap gap-4">
+              <Reveal delay={0.9} className="mt-8 hidden flex-wrap gap-4 md:flex">
                 <Link
                   href="/projects"
                   className="rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition-transform hover:-translate-y-0.5"
@@ -82,7 +82,7 @@ export default function Home() {
                 </Link>
               </Reveal>
 
-              <Reveal delay={1.1} className="mt-8">
+              <Reveal delay={1.1} className="mt-8 hidden md:block">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:hidden" />
@@ -109,8 +109,15 @@ export default function Home() {
       {/* Personal introduction */}
       <section className="mx-auto max-w-5xl px-6 py-14 sm:py-16">
         <Reveal className="grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-          <div><p className="text-sm font-medium text-accent">A little about me</p><h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Curious by nature.<br />Building for the web.</h2></div>
-          <div><p className="leading-relaxed text-muted sm:text-lg">I&apos;m a Computer Science Engineering student and software developer who enjoys turning ideas into useful digital experiences. I work across front-end and back-end technologies, bringing thoughtful interfaces and dependable functionality together.</p><Link href="/about" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-foreground">More about me <span aria-hidden="true">→</span></Link></div>
+          <div><p className="text-sm font-medium text-accent">A little about me</p><h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Electrical Engineer by degree.<br />Full-Stack Developer by passion.</h2></div>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
+            <div className="mx-auto h-44 w-44 shrink-0 sm:mx-0"><div className="intro-orb" aria-hidden="true"><span className="intro-orb__core" /><span className="intro-orb__ring intro-orb__ring--one" /><span className="intro-orb__ring intro-orb__ring--two" /><span className="intro-orb__ring intro-orb__ring--three" /><span className="intro-orb__satellite" /></div></div>
+            <div>
+              <p className="leading-relaxed text-muted sm:text-lg">I build scalable digital products, explore AI/ML integrations, and contribute to open-source software.</p>
+              <p className="mt-3 leading-relaxed text-muted sm:text-lg">Open to <strong className="font-semibold text-foreground">internships</strong>, <strong className="font-semibold text-foreground">freelance projects</strong>, and <strong className="font-semibold text-foreground">full-time engineering roles</strong>. If you&apos;re building something meaningful, I&apos;d love to be part of it.</p>
+              <Link href="/about" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-foreground">More about me <span aria-hidden="true">→</span></Link>
+            </div>
+          </div>
         </Reveal>
       </section>
 

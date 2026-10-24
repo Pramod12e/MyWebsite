@@ -185,6 +185,56 @@ body {
   animation: gradient-shift 6s ease-in-out infinite;
 }
 
+.intro-orb {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  perspective: 700px;
+  filter: drop-shadow(0 12px 30px rgb(8 145 178 / 18%));
+}
+
+.intro-orb__core {
+  position: absolute;
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 32% 28%, #a5f3fc 0%, #22d3ee 24%, #6366f1 64%, #312e81 100%);
+  box-shadow: inset -12px -14px 24px rgb(15 23 42 / 35%), inset 5px 5px 12px rgb(255 255 255 / 55%), 0 0 40px rgb(34 211 238 / 30%);
+  animation: orb-breathe 5s ease-in-out infinite;
+}
+
+.intro-orb__ring {
+  position: absolute;
+  width: 9rem;
+  height: 4rem;
+  border: 1px solid rgb(34 211 238 / 55%);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  box-shadow: 0 0 14px rgb(99 102 241 / 12%);
+}
+
+.intro-orb__ring--one { transform: rotateX(68deg) rotateZ(-24deg); animation: orb-spin 9s linear infinite; }
+.intro-orb__ring--two { width: 8.1rem; height: 4.7rem; border-color: rgb(99 102 241 / 48%); transform: rotateX(68deg) rotateZ(48deg); animation: orb-spin-reverse 12s linear infinite; }
+.intro-orb__ring--three { width: 6rem; height: 9rem; border-color: rgb(217 70 239 / 35%); transform: rotateY(70deg) rotateZ(28deg); animation: orb-spin 16s linear infinite; }
+
+.intro-orb__satellite {
+  position: absolute;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 9999px;
+  background: #f0abfc;
+  box-shadow: 0 0 18px rgb(217 70 239 / 85%);
+  transform: translate(4.2rem, -2.2rem);
+  animation: orb-satellite 6s ease-in-out infinite;
+}
+
+@keyframes orb-spin { to { rotate: 360deg; } }
+@keyframes orb-spin-reverse { to { rotate: -360deg; } }
+@keyframes orb-breathe { 0%, 100% { transform: scale(0.96); } 50% { transform: scale(1.04); } }
+@keyframes orb-satellite { 0%, 100% { transform: translate(4.2rem, -2.2rem); } 50% { transform: translate(-4rem, 2.3rem); } }
+
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
@@ -196,6 +246,11 @@ body {
     display: none;
   }
   .text-shimmer {
+    animation: none;
+  }
+  .intro-orb__core,
+  .intro-orb__ring,
+  .intro-orb__satellite {
     animation: none;
   }
 }

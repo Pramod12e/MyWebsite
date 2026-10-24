@@ -11,10 +11,9 @@ import {
   useTransform,
 } from "motion/react";
 
-const DISMISS_KEY = "about-nudge-dismissed";
 const INTRO_KEY = "intro-seen";
+const ABOUT_KEY = "about-visited";
 const SHOW_DELAY_MS = 600; // delay after the intro finishes
-const VISIBLE_MS = 25000; // hides itself after this long
 
 function read(key: string) {
   try {
@@ -24,9 +23,9 @@ function read(key: string) {
   }
 }
 
-function markDismissed() {
+function markAboutVisited() {
   try {
-    sessionStorage.setItem(DISMISS_KEY, "1");
+    sessionStorage.setItem(ABOUT_KEY, "1");
   } catch {
     /* ignore */
   }
@@ -41,7 +40,7 @@ const faces: [string, string][] = [
   ["→", "rotateX(-90deg)"],
 ];
 
-function NudgeCard({ onDismiss }: { onDismiss: () => void }) {
+function NudgeCard() {
   const reduce = useReducedMotion();
   const px = useMotionValue(0);
   const py = useMotionValue(0);
@@ -106,14 +105,14 @@ function NudgeCard({ onDismiss }: { onDismiss: () => void }) {
 
           <div className="min-w-0">
             <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-cyan-300/80">
-              // psst
+              A quick hello
             </p>
             <p className="mt-0.5 text-sm font-semibold leading-snug">
               Curious who built this?
             </p>
             <Link
               href="/about"
-              onClick={onDismiss}
+              onClick={markAboutVisited}
               className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-xs font-semibold text-black transition-transform hover:scale-105"
             >
               Meet me
@@ -128,14 +127,6 @@ function NudgeCard({ onDismiss }: { onDismiss: () => void }) {
             </Link>
           </div>
 
-          <button
-            type="button"
-            aria-label="Dismiss"
-            onClick={onDismiss}
-            className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full text-white/60 transition-colors hover:bg-white/10 hover:text-white"
-          >
-            ×
-          </button>
         </div>
       </motion.div>
     </motion.div>
@@ -146,7 +137,7 @@ export default function AboutNudge() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (read(DISMISS_KEY)) return;
+    if (read(ABOUT_KEY)) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const timers: number[] = [];
@@ -154,8 +145,8 @@ export default function AboutNudge() {
     let started = false;
 
     function show() {
+      if (read(ABOUT_KEY)) return;
       setVisible(true);
-      timers.push(window.setTimeout(() => setVisible(false), VISIBLE_MS));
     }
 
     function start() {
@@ -189,11 +180,6 @@ export default function AboutNudge() {
     };
   }, [visible]);
 
-  const dismiss = () => {
-    markDismissed();
-    setVisible(false);
-  };
-
   return (
     <AnimatePresence>
       {visible && (
@@ -205,7 +191,7 @@ export default function AboutNudge() {
           transition={{ type: "spring", stiffness: 160, damping: 18 }}
           className="fixed inset-x-4 bottom-4 z-40 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-80"
         >
-          <NudgeCard onDismiss={dismiss} />
+          <NudgeCard />
         </motion.div>
       )}
     </AnimatePresence>

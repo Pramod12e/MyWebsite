@@ -6,8 +6,9 @@ import SectionHeading from "@/components/SectionHeading";
 import ProjectCard from "@/components/ProjectCard";
 import SocialLinks from "@/components/SocialLinks";
 import AboutCertificates from "@/components/AboutCertificates";
-import PortraitGallery from "@/components/PortraitGallery";
-import { aboutLinks, certificationEntries, educationEntries, skillGroups } from "@/lib/about";
+import SketchbookGallery from "@/components/SketchbookGallery";
+import AboutVisitMarker from "@/components/AboutVisitMarker";
+import { aboutLinks, certificationEntries, educationEntries, portraitArtworks, skillGroups } from "@/lib/about";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
@@ -18,19 +19,15 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-12 sm:py-16 md:py-20">
-      <section className="grid items-center gap-x-12 gap-y-6 md:grid-cols-[1.15fr_0.85fr] md:gap-y-7">
-        <Reveal className="order-1 md:col-span-2 md:row-start-1">
-          <p className="text-sm font-medium text-accent">A little about me</p>
-          <h1 className="mt-3 flex flex-wrap items-center gap-x-3 text-4xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+      <AboutVisitMarker />
+      <section className="grid items-center gap-x-12 gap-y-6 md:grid-cols-[1.15fr_0.85fr] md:gap-y-5">
+        <Reveal className="order-1 md:col-start-1 md:row-start-1">
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
             <span className="font-serif italic tracking-[-0.045em]">Pramod Kumar Bindhani</span>
-            <span aria-label="Verified" title="Verified" className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-white shadow-md shadow-blue-600/25 sm:h-9 sm:w-9">
-              <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><path d="m5 12.5 4.2 4.2L19 7" /></svg>
-            </span>
           </h1>
-          <div aria-hidden="true" className="mt-3 h-1 w-28 rounded-full bg-linear-to-r from-cyan-500 via-indigo-500 to-fuchsia-500" />
         </Reveal>
 
-        <Reveal delay={0.08} className="order-2 mx-auto w-full max-w-sm md:col-start-2 md:row-span-2 md:row-start-2 md:h-full md:max-w-none"><AboutPhoto /></Reveal>
+        <Reveal delay={0.08} className="order-2 mx-auto w-full max-w-sm md:col-start-2 md:row-span-3 md:row-start-1 md:h-full md:max-w-none"><AboutPhoto /></Reveal>
 
         <div className="order-3 md:col-start-1 md:row-start-2">
           <Reveal delay={0.12} className="space-y-4 text-base leading-relaxed text-muted sm:text-lg">
@@ -39,7 +36,7 @@ export default function About() {
           </Reveal>
         </div>
 
-        <Reveal delay={0.2} className="order-4 flex flex-wrap items-center gap-4 border-t border-border pt-5 md:col-span-2 md:row-start-3 sm:gap-6">
+        <Reveal delay={0.2} className="order-4 flex flex-wrap items-center gap-4 border-t border-border pt-5 md:col-start-1 md:row-start-3 sm:gap-6">
           <p className="font-serif text-2xl italic font-semibold tracking-tight text-accent">Follow me</p>
           <a href="/resume.pdf" download className="inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-opacity hover:opacity-80">Download resume <span aria-hidden="true">↓</span></a>
           <SocialLinks />
@@ -77,7 +74,7 @@ export default function About() {
       <section className="mt-16 sm:mt-20" id="hobbies">
         <Reveal><SectionHeading eyebrow="Beyond the screen" title="A few things I enjoy" /></Reveal>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <Reveal><PortraitGallery /></Reveal>
+          <Reveal><SketchbookGallery artworks={portraitArtworks} /></Reveal>
           {[
             { icon: "▤", title: "Reading books", detail: "Always learning" },
             { icon: "文", title: "Learning languages", detail: "One phrase at a time" },

@@ -3,6 +3,15 @@ export type SkillGroup = {
   items: string[];
 };
 
+export type PortraitArtwork = {
+  src: string;
+  title: string;
+  medium?: string;
+};
+
+// Add your drawing files under public/artworks and list them here to show them in the animated gallery.
+export const portraitArtworks: PortraitArtwork[] = [];
+
 export const aboutLinks = {
   github: "https://github.com/pramod12e",
   // Add your personal profile URL when ready.

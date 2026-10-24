@@ -137,3 +137,25 @@ The latest request was to extend the About portrait through the Follow me row, i
 - `npx tsc --noEmit` passed.
 - Focused ESLint passed for all changed TSX components and pages.
 - `git diff --check` passed. Git emitted only LF-to-CRLF working-copy notices for pre-existing/current text files.
+
+## Homepage and About refinements (2026-10-24)
+
+The user asked to hide supporting hero copy and calls to action on smaller screens, replace the homepage About copy with a 3D animated sphere and revised introduction, improve the hero's dark theme, keep the About prompt visible until About is visited, show the full profile photo beside the About text and follow links, use the Gmail brand mark, and remove the browser upload control from the portrait gallery.
+
+### Files changed and why
+
+- `app/page.tsx`: Below the Tailwind `md` breakpoint, the hero description, View projects/Read the blog buttons, and availability badge are hidden while the headline and animated Bento tiles remain. The hero now uses a dark slate-to-black gradient in dark mode. Replaced the old “Curious by nature / Building for the web” intro heading and CS student copy with the requested Electrical Engineer / Full-Stack Developer wording. Added the requested AI/ML, open-source, and opportunity copy beside the animated sphere. The existing Featured projects and Latest writing sections are retained in their original sequence.
+- `app/globals.css`: Added a CSS 3D sphere with three animated orbital rings, a shaded core, and a moving satellite. Reduced-motion preferences disable the animation.
+- `components/AboutNudge.tsx`: Removed the 25-second auto-hide and dismiss control so the corner About prompt remains visible until the visitor opens About. It still waits for the intro animation (or a 15-second safety timeout) before appearing.
+- `components/AboutVisitMarker.tsx`: Marks direct visits to `/about` in session storage. The About prompt's link also sets the same marker, preventing it from reappearing when the visitor returns home in that session.
+- `app/about/page.tsx`: Reworked the profile grid: the name, bio, Follow me row, resume button, and social icons are grouped in the left column on desktop, with the photo spanning their full height in the right column. On mobile, the order is name, photo, bio, then follow links. Swapped the upload gallery for the configured artwork gallery.
+- `components/AboutPhoto.tsx`: Uses `object-contain` so the full source portrait remains visible rather than cropping it.
+- `components/SocialLinks.tsx`: Replaced the generic email envelope with a multicolor Gmail-style mark on a white button; GitHub and LinkedIn retain their brand colors.
+- `lib/about.ts`: Added the `PortraitArtwork` type and `portraitArtworks` configuration. To add drawings, put image files in `public/artworks/` and add entries such as `{ src: "/artworks/portrait-1.jpg", title: "Portrait study", medium: "Graphite" }` to this array. No artwork photos were present in `public/`, so the gallery currently shows its empty state.
+- `components/SketchbookGallery.tsx`: This is the animated, modal 3D gallery that reads the static artwork configuration. The browser-only upload feature was removed by deleting the unused `components/PortraitGallery.tsx`.
+
+### Verification
+
+- `npx tsc --noEmit` passed.
+- Focused ESLint passed for the changed pages, components, and About data.
+- `git diff --check` passed.
