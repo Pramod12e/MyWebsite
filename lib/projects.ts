@@ -24,7 +24,7 @@ export const projects: Project[] = [
       "MongoDB database for listings and users",
     ],
     tags: ["React", "Node.js", "Express", "MongoDB"],
-    live: "https://github.com/pramod12e/StayFinder",
+    live: "https://stayfinder-2-14cs.onrender.com/listings/",
     github: "https://github.com/pramod12e/StayFinder",
   },
   {
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     ],
     tags: ["MERN", "WebRTC", "REST APIs"],
     live: "https://health-tech-cimc.onrender.com",
-    github: "https://github.com/pramod12e",
+    github: "https://github.com/Pramod12e/Health-Tech",
   },
   {
     slug: "admin-dashboard",

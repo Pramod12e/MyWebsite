@@ -33,10 +33,10 @@ export default function ProjectCard({ project }: { project: Project }) {
 
       <div className="mt-6 flex items-center justify-between text-sm font-medium">
         <div className="flex gap-5">
-          <a href={project.live} className="transition-colors hover:text-accent">
+          <a href={project.live} target="_blank" rel="noreferrer" className="transition-colors hover:text-accent">
             Live demo ↗
           </a>
-          <a href={project.github} className="transition-colors hover:text-accent">
+          <a href={project.github} target="_blank" rel="noreferrer" className="transition-colors hover:text-accent">
             GitHub ↗
           </a>
         </div>

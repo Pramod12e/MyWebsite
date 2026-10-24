@@ -174,3 +174,17 @@ The user asked to hide supporting hero copy and calls to action on smaller scree
 - `npx tsc --noEmit` passed.
 - Focused ESLint passed for the edited pages and components.
 - `git diff --check` passed.
+
+## Contact links and intro 4D cube (2026-10-24)
+
+- `lib/about.ts`: Set the supplied canonical GitHub URL, LinkedIn profile, and email address in `aboutLinks`. The shared Follow me row, Contact page, and icon links read from this one object.
+- `lib/projects.ts`: StayFinder now uses the supplied Render listings URL for its live demo and its existing StayFinder GitHub repository. Health-Tech now uses the supplied Health-Tech repository and existing Render demo URL.
+- `components/ProjectCard.tsx`: The Live demo and GitHub actions open their external project destinations in a new tab.
+- `components/IntroCube.tsx` (new): Replaced the sphere in the homepage intro card with an animated cube/tesseract-style motif. All six outer faces have a short personal/work label, with an independently rotating inner cube, two circular orbit lines, and animated satellites. The faces are hidden from behind so their labels stay legible.
+- `app/globals.css`: Added the cube's 3D transforms and continuous orbit/rotation animations. The reduced-motion media rule stops these animations.
+- `app/page.tsx`: The copy about scalable products, AI/ML, open source, opportunities, and About remains in the intro card beside the cube.
+- `app/contact/page.tsx`: Repositioned the desktop Contact page into a vertically centered two-column full-view layout, with the intro/social/contact details on the left and the message form on the right. Mobile stacks those columns.
+
+### Verification
+
+- TypeScript, focused ESLint, and `git diff --check` passed after the changes.

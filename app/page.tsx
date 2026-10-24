@@ -6,6 +6,7 @@ import AnimatedHeadline from "@/components/AnimatedHeadline";
 import HeroBento from "@/components/HeroBento";
 import HeroWaves from "@/components/HeroWaves";
 import AboutNudge from "@/components/AboutNudge";
+import IntroCube from "@/components/IntroCube";
 import Ticker from "@/components/Ticker";
 import { projects } from "@/lib/projects";
 import PostCard from "@/components/PostCard";
@@ -117,7 +118,7 @@ export default function Home() {
             <span aria-hidden="true" className="pointer-events-none absolute -right-10 -top-12 -z-10 h-40 w-40 rounded-full bg-fuchsia-500/10 blur-3xl" />
             <span aria-hidden="true" className="pointer-events-none absolute -bottom-16 left-8 -z-10 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl" />
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
-              <div className="mx-auto h-40 w-40 shrink-0 sm:mx-0 sm:h-36 sm:w-36"><div className="intro-orb" aria-hidden="true"><span className="intro-orb__core" /><span className="intro-orb__ring intro-orb__ring--one" /><span className="intro-orb__ring intro-orb__ring--two" /><span className="intro-orb__ring intro-orb__ring--three" /><span className="intro-orb__satellite" /></div></div>
+              <div className="mx-auto h-44 w-44 shrink-0 sm:mx-0 sm:h-48 sm:w-48"><IntroCube /></div>
               <div className="relative">
                 <p className="leading-relaxed text-muted sm:text-base">I build scalable digital products, explore AI/ML integrations, and contribute to open-source software.</p>
                 <p className="mt-3 text-sm leading-relaxed text-muted">Open to <strong className="font-semibold text-foreground">internships</strong>, <strong className="font-semibold text-foreground">freelance projects</strong>, and <strong className="font-semibold text-foreground">full-time engineering roles</strong>. If you&apos;re building something meaningful, I&apos;d love to be part of it.</p>

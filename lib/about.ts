@@ -13,11 +13,9 @@ export type PortraitArtwork = {
 export const portraitArtworks: PortraitArtwork[] = [];
 
 export const aboutLinks = {
-  github: "https://github.com/pramod12e",
-  // Add your personal profile URL when ready.
-  linkedin: "",
-  // Add your public contact email when ready.
-  email: "",
+  github: "https://github.com/Pramod12e",
+  linkedin: "https://www.linkedin.com/in/pramod-kumar-bindhani-a44399340/",
+  email: "pramodkumarbindhani9@gmail.com",
 };
 
 export const educationEntries = [
