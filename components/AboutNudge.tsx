@@ -12,7 +12,7 @@ import {
 } from "motion/react";
 
 const INTRO_KEY = "intro-seen";
-const ABOUT_KEY = "about-visited";
+const ABOUT_KEY = "about-visited-v2";
 const SHOW_DELAY_MS = 600; // delay after the intro finishes
 
 function read(key: string) {

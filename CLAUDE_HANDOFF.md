@@ -159,3 +159,18 @@ The user asked to hide supporting hero copy and calls to action on smaller scree
 - `npx tsc --noEmit` passed.
 - Focused ESLint passed for the changed pages, components, and About data.
 - `git diff --check` passed.
+
+## Follow-up visual corrections (2026-10-24)
+
+- `components/AboutNudge.tsx` and `components/AboutVisitMarker.tsx`: Bumped the session marker to `about-visited-v2` so the corner 3D “Curious who built this?” prompt appears again after this update. It remains visible until About is visited, then stays hidden for the rest of that session.
+- `app/page.tsx`: Corrected the intro credential to Computer Science Engineering. Styled the intro as a theme-aware card with cyan/fuchsia glows, the animated 3D sphere, and the existing project/blog layout following it without changing their shared max-width alignment.
+- `app/about/page.tsx`: Reduced technology tags such as REST APIs, MongoDB, and MySQL to compact 10–11px chips. The portrait remains in the adjacent desktop grid area.
+- `components/AboutPhoto.tsx`: Changed the photo card to a normal 4:5 portrait crop with `object-cover`; this removes the black letterbox bands caused by containing the image. The source image is 846×941.
+- `app/contact/page.tsx`: Replaced dead `your-username` profile URLs with the shared configured social icons, and redesigned the navbar Contact destination as a responsive intro/social/form layout. It shows the email address only if `aboutLinks.email` is configured.
+- `app/contact/actions.ts`: Changed the unconfigured form error so it no longer directs visitors to an email address that may not be configured.
+
+### Verification
+
+- `npx tsc --noEmit` passed.
+- Focused ESLint passed for the edited pages and components.
+- `git diff --check` passed.

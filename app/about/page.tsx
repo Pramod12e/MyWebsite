@@ -27,7 +27,7 @@ export default function About() {
           </h1>
         </Reveal>
 
-        <Reveal delay={0.08} className="order-2 mx-auto w-full max-w-sm md:col-start-2 md:row-span-3 md:row-start-1 md:h-full md:max-w-none"><AboutPhoto /></Reveal>
+        <Reveal delay={0.08} className="order-2 mx-auto w-full max-w-sm md:col-start-2 md:row-span-3 md:row-start-1 md:max-w-none"><AboutPhoto /></Reveal>
 
         <div className="order-3 md:col-start-1 md:row-start-2">
           <Reveal delay={0.12} className="space-y-4 text-base leading-relaxed text-muted sm:text-lg">
@@ -46,7 +46,7 @@ export default function About() {
       <section className="mt-16 sm:mt-20" id="tech-stack">
         <Reveal><SectionHeading eyebrow="Tech stack" title="Tools I use to build" /></Reveal>
         <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((group, index) => <Reveal key={group.title} delay={index * 0.05}><div className="h-full rounded-2xl border border-border bg-background/70 p-5 transition-colors hover:border-accent/50"><h3 className="font-semibold">{group.title}</h3><ul className="mt-4 flex flex-wrap gap-2">{group.items.map((item) => <li key={item} className="rounded-full border border-border px-3 py-1 font-mono text-xs text-muted">{item}</li>)}</ul></div></Reveal>)}
+          {skillGroups.map((group, index) => <Reveal key={group.title} delay={index * 0.05}><div className="h-full rounded-2xl border border-border bg-background/70 p-5 transition-colors hover:border-accent/50"><h3 className="font-semibold">{group.title}</h3><ul className="mt-4 flex flex-wrap gap-2">{group.items.map((item) => <li key={item} className="rounded-full border border-border px-2 py-0.5 font-mono text-[10px] leading-5 text-muted sm:text-[11px]">{item}</li>)}</ul></div></Reveal>)}
         </div>
       </section>
 

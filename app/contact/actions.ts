@@ -42,7 +42,7 @@ export async function sendMessage(
   if (!apiKey || !to) {
     return {
       status: "error",
-      message: "Contact form is not configured yet. Please email me directly.",
+      message: "The contact form is temporarily unavailable. Please try again later.",
     };
   }
 

@@ -109,13 +109,20 @@ export default function Home() {
       {/* Personal introduction */}
       <section className="mx-auto max-w-5xl px-6 py-14 sm:py-16">
         <Reveal className="grid gap-6 md:grid-cols-[0.8fr_1.2fr] md:items-end">
-          <div><p className="text-sm font-medium text-accent">A little about me</p><h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Electrical Engineer by degree.<br />Full-Stack Developer by passion.</h2></div>
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-center">
-            <div className="mx-auto h-44 w-44 shrink-0 sm:mx-0"><div className="intro-orb" aria-hidden="true"><span className="intro-orb__core" /><span className="intro-orb__ring intro-orb__ring--one" /><span className="intro-orb__ring intro-orb__ring--two" /><span className="intro-orb__ring intro-orb__ring--three" /><span className="intro-orb__satellite" /></div></div>
-            <div>
-              <p className="leading-relaxed text-muted sm:text-lg">I build scalable digital products, explore AI/ML integrations, and contribute to open-source software.</p>
-              <p className="mt-3 leading-relaxed text-muted sm:text-lg">Open to <strong className="font-semibold text-foreground">internships</strong>, <strong className="font-semibold text-foreground">freelance projects</strong>, and <strong className="font-semibold text-foreground">full-time engineering roles</strong>. If you&apos;re building something meaningful, I&apos;d love to be part of it.</p>
-              <Link href="/about" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-foreground">More about me <span aria-hidden="true">→</span></Link>
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">A little about me</p>
+            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">Computer Science Engineering student.<br /><span className="text-accent">Full-Stack Developer by passion.</span></h2>
+          </div>
+          <div className="relative isolate overflow-hidden rounded-3xl border border-border bg-linear-to-br from-cyan-500/[0.07] via-background to-fuchsia-500/[0.08] p-5 shadow-lg shadow-accent/5 sm:p-6">
+            <span aria-hidden="true" className="pointer-events-none absolute -right-10 -top-12 -z-10 h-40 w-40 rounded-full bg-fuchsia-500/10 blur-3xl" />
+            <span aria-hidden="true" className="pointer-events-none absolute -bottom-16 left-8 -z-10 h-40 w-40 rounded-full bg-cyan-500/10 blur-3xl" />
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5">
+              <div className="mx-auto h-40 w-40 shrink-0 sm:mx-0 sm:h-36 sm:w-36"><div className="intro-orb" aria-hidden="true"><span className="intro-orb__core" /><span className="intro-orb__ring intro-orb__ring--one" /><span className="intro-orb__ring intro-orb__ring--two" /><span className="intro-orb__ring intro-orb__ring--three" /><span className="intro-orb__satellite" /></div></div>
+              <div className="relative">
+                <p className="leading-relaxed text-muted sm:text-base">I build scalable digital products, explore AI/ML integrations, and contribute to open-source software.</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">Open to <strong className="font-semibold text-foreground">internships</strong>, <strong className="font-semibold text-foreground">freelance projects</strong>, and <strong className="font-semibold text-foreground">full-time engineering roles</strong>. If you&apos;re building something meaningful, I&apos;d love to be part of it.</p>
+                <Link href="/about" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:text-foreground">More about me <span aria-hidden="true">→</span></Link>
+              </div>
             </div>
           </div>
         </Reveal>
